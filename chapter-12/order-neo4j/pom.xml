@@ -17,6 +17,9 @@
         <spring.version>4.0.7.RELEASE</spring.version>
         <springDataNeo4j.version>3.1.2.RELEASE</springDataNeo4j.version>
         <validationApi.version>1.0.0.GA</validationApi.version>
+        <neo4j.graph-collections.version>0.7.4-neo4j-2.0.4</neo4j.graph-collections.version>
+        <spring-data-commons.version>1.8.2.RELEASE</spring-data-commons.version>
+        <neo4j.version>2.1.2</neo4j.version>
     </properties>
 
     <dependencies>
@@ -27,9 +30,24 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <version>${spring-data-commons.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-neo4j</artifactId>
             <version>${springDataNeo4j.version}</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/libs/spring-data-neo4j-3.1.2.RELEASE.jar</systemPath>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.neo4j/neo4j -->
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j</artifactId>
+            <version>${neo4j.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
@@ -51,9 +69,25 @@
     </dependencies>
 
     <repositories>
+<!--        <repository>-->
+<!--            <id>neo4j</id>-->
+<!--            <url>http://m2.neo4j.org/content/repositories/releases</url>-->
+<!--        </repository>-->
         <repository>
-            <id>neo4j</id>
-            <url>http://m2.neo4j.org/content/repositories/releases</url>
+            <id>ali</id>
+            <url>https://maven.aliyun.com/repository/central</url>
+        </repository>
+        <repository>
+            <id>ali public</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+        <repository>
+            <id>ali gradle-plugin</id>
+            <url>https://maven.aliyun.com/repository/gradle-plugin</url>
+        </repository>
+        <repository>
+            <id>neo4j-contrib</id>
+            <url>https://raw.githubusercontent.com/neo4j-contrib/m2/master/releases</url>
         </repository>
     </repositories>
 
