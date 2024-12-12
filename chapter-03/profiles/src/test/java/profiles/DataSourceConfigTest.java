@@ -2,6 +2,7 @@ package profiles;
 
 import com.myapp.DataSourceConfig;
 import org.junit.Test;
+import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+@RunWith(Enclosed.class)
 public class DataSourceConfigTest {
 
     @RunWith(SpringJUnit4ClassRunner.class)
