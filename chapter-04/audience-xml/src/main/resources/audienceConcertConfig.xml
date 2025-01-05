@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="audience" class="concert.Audience"/>
+    <bean id="encodeableIntroducer" class="concert.EncodeableIntroducer"/>
+    <bean id="performance" class="concert.PerformanceImpl"/>
+    <bean id="encoreable" class="concert.DefaultEncoreable"/>
+
+    <aop:config>
+        <aop:aspect ref="audience">
+            <aop:pointcut
+                    id="performancePointcut"
+                    expression="execution(* concert.Performance.perform(..))"/>
+
+            <aop:before
+                    pointcut-ref="performancePointcut"
+                    method="silenceCellPhones"/>
+
+            <aop:before
+                    pointcut-ref="performancePointcut"
+                    method="takeSeats"/>
+
+            <aop:after-returning
+                    pointcut-ref="performancePointcut"
+                    method="applause"/>
+
+            <aop:after-throwing
+                    pointcut-ref="performancePointcut"
+                    method="demandRefund"/>
+
+
+            <aop:around
+                    pointcut-ref="performancePointcut"
+                    method="watchPerformance"/>
+        </aop:aspect>
+
+        <aop:aspect ref="encodeableIntroducer">
+            <aop:declare-parents
+                    default-impl="concert.DefaultEncoreable"
+                    types-matching="concert.Performance+"
+                    implement-interface="concert.Encoreable"
+            />
+        </aop:aspect>
+    </aop:config>
+</beans>

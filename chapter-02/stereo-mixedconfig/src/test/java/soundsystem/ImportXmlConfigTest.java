@@ -33,4 +33,12 @@ public class ImportXmlConfigTest {
                 log.getLog());
     }
 
+    @Autowired
+    private Performance performance;
+
+    @Test
+    public void testPerformance() {
+        performance.perform();
+    }
+
 }

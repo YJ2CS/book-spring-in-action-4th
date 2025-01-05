@@ -20,4 +20,6 @@
         </constructor-arg>
     </bean>
 
+    <bean id="performance" class="soundsystem.PerformanceImpl"/>
+
 </beans>
