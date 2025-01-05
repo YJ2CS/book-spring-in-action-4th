@@ -10,7 +10,7 @@ import spittr.service.SpitterService;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = RpcClientConfig.class)
+@ContextConfiguration(classes = RmiClientConfig.class)
 public class SpitterServiceTest {
 
     @Autowired

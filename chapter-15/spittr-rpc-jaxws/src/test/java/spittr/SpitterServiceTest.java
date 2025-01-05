@@ -10,7 +10,7 @@ import spittr.service.SpitterService;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = HttpInvokerClientConfig.class)
+@ContextConfiguration(classes = JaxWsClientConfig.class)
 public class SpitterServiceTest {
 
     @Autowired
